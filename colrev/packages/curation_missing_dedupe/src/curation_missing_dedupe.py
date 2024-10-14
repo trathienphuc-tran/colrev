@@ -308,7 +308,7 @@ class CurationMissingDedupe:
             preferred_masterdata_sources = [
                 s
                 for s in self.review_manager.settings.sources
-                if s.endpoint != "colrev.files_dir"
+                if s.endpoint != "colrev_files_dir"
             ]
 
             self.dedupe_operation.apply_merges(

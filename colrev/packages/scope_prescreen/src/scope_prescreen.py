@@ -247,7 +247,7 @@ class ScopePrescreen:
         for (
             existing_scope_prescreen
         ) in operation.review_manager.settings.prescreen.prescreen_package_endpoints:
-            if existing_scope_prescreen["endpoint"] != "colrev.scope_prescreen":
+            if existing_scope_prescreen["endpoint"] != "colrev_scope_prescreen":
                 continue
             operation.review_manager.logger.info(
                 "Integrating into existing colrev.scope_prescreen"
@@ -265,7 +265,7 @@ class ScopePrescreen:
 
         # Insert (if not added before)
         operation.review_manager.settings.prescreen.prescreen_package_endpoints.insert(
-            0, {**{"endpoint": "colrev.scope_prescreen"}, **params_dict}
+            0, {**{"endpoint": "colrev_scope_prescreen"}, **params_dict}
         )
 
     def run_prescreen(

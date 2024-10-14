@@ -25,7 +25,7 @@ class GoogleScholarSearchSource:
     """GoogleScholar"""
 
     settings_class = colrev.package_manager.package_settings.DefaultSourceSettings
-    endpoint = "colrev.google_scholar"
+    endpoint = "colrev_google_scholar"
     # pylint: disable=colrev-missed-constant-usage
     source_identifier = "url"
     search_types = [SearchType.DB]

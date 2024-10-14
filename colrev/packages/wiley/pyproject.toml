@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "colrev.wiley"
+name = "colrev_wiley"
 description = "CoLRev package for wiley"
 version = "0.1.0"
 license = "MIT"

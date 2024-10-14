@@ -33,7 +33,7 @@ class ERICSearchSource:
     # pylint: disable=colrev-missed-constant-usage
     source_identifier = "ID"
     search_types = [SearchType.API]
-    endpoint = "colrev.eric"
+    endpoint = "colrev_eric"
 
     db_url = "https://eric.ed.gov/"
 

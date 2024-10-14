@@ -43,7 +43,7 @@ class OpenAlexMetadataPrep:
         self.open_alex_prefixes = [
             s.get_origin_prefix()
             for s in prep_operation.review_manager.settings.sources
-            if s.endpoint == "colrev.open_alex"
+            if s.endpoint == "colrev_open_alex"
         ]
 
     def check_availability(

@@ -65,7 +65,7 @@ class ColrevCuration:
         """Add as an endpoint"""
 
         add_source = {
-            "endpoint": "colrev.colrev_curation",
+            "endpoint": "colrev_curation",
             "version": "0.1",
             "curation_url": "TODO",
             "curated_masterdata": True,

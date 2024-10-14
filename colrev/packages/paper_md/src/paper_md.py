@@ -140,7 +140,7 @@ class PaperMarkdown:
         """Add as an endpoint"""
 
         add_source = {
-            "endpoint": "colrev.paper_md",
+            "endpoint": "colrev_paper_md",
             "version": "0.1",
             "word_template": Path("data/APA-7.docx"),
         }

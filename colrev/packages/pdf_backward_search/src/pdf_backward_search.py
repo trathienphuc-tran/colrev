@@ -45,7 +45,7 @@ class BackwardSearchSource:
     _api_url = "https://opencitations.net/index/coci/api/v1/references/"
 
     settings_class = colrev.package_manager.package_settings.DefaultSourceSettings
-    endpoint = "colrev.pdf_backward_search"
+    endpoint = "colrev_pdf_backward_search"
     source_identifier = Fields.ID
     search_types = [SearchType.BACKWARD_SEARCH]
 
@@ -72,7 +72,7 @@ class BackwardSearchSource:
         """Get the default SearchSource settings"""
 
         return colrev.settings.SearchSource(
-            endpoint="colrev.pdf_backward_search",
+            endpoint="colrev_pdf_backward_search",
             filename=Path("data/search/pdf_backward_search.bib"),
             search_type=SearchType.BACKWARD_SEARCH,
             search_parameters={

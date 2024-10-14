@@ -27,7 +27,7 @@ class ABIInformProQuestSearchSource:
     """ABI/INFORM (ProQuest)"""
 
     settings_class = colrev.package_manager.package_settings.DefaultSourceSettings
-    endpoint = "colrev.abi_inform_proquest"
+    endpoint = "colrev_abi_inform_proquest"
     source_identifier = "{{ID}}"
     search_types = [SearchType.DB]
 

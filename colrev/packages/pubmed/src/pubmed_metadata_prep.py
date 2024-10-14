@@ -46,7 +46,7 @@ class PubmedMetadataPrep:
         self.pubmed_prefixes = [
             s.get_origin_prefix()
             for s in prep_operation.review_manager.settings.sources
-            if s.endpoint == "colrev.pubmed"
+            if s.endpoint == "colrev_pubmed"
         ]
 
     def check_availability(

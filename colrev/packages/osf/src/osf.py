@@ -40,7 +40,7 @@ class OSFSearchSource:
 
     source_identifier = Fields.ID
     search_types = [SearchType.API]
-    endpoint = "colrev.osf"
+    endpoint = "colrev_osf"
 
     ci_supported: bool = Field(default=True)
     heuristic_status = SearchSourceHeuristicStatus.oni

@@ -46,7 +46,7 @@ class CurationPrep:
         curated_endpoints = [
             x
             for x in self.review_manager.settings.data.data_package_endpoints
-            if x["endpoint"] == "colrev.colrev_curation"
+            if x["endpoint"] == "colrev_colrev_curation"
         ]
         if curated_endpoints:
             curated_endpoint = curated_endpoints[0]

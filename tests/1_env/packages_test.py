@@ -118,11 +118,11 @@
 #         selected_packages=[
 #             {"endpoint": p}
 #             for p in dedupe_identifiers
-#             if p not in ["colrev.curation_full_outlet_dedupe"]
+#             if p not in ["colrev_curation_full_outlet_dedupe"]
 #         ]
 #         + [
 #             {
-#                 "endpoint": "colrev.curation_full_outlet_dedupe",
+#                 "endpoint": "colrev_curation_full_outlet_dedupe",
 #                 "selected_source": "test",
 #             },
 #         ],
@@ -290,14 +290,14 @@
 #             for p in data_identifiers
 #             if p
 #             not in [
-#                 "colrev.obsidian",
-#                 "colrev.colrev_curation",
+#                 "colrev_obsidian",
+#                 "colrev_colrev_curation",
 #             ]
 #         ]
 #         + [
-#             {"endpoint": "colrev.obsidian", "version": "0.1.0", "config": {}},
+#             {"endpoint": "colrev_obsidian", "version": "0.1.0", "config": {}},
 #             {
-#                 "endpoint": "colrev.colrev_curation",
+#                 "endpoint": "colrev_colrev_curation",
 #                 "curation_url": "",
 #                 "curated_masterdata": True,
 #                 "masterdata_restrictions": {},
@@ -329,16 +329,16 @@
 #     with pytest.raises(colrev_exceptions.MissingDependencyError):
 #         package_manager.add_package_to_settings(
 #             operation=dedupe_operation,
-#             package_identifier="colrev.curation_dedupe",
+#             package_identifier="colrev_curation_dedupe",
 #             params="",
 #         )
 #     package_manager.add_package_to_settings(
 #         operation=dedupe_operation,
-#         package_identifier="colrev.curation_missing_dedupe",
+#         package_identifier="colrev_curation_missing_dedupe",
 #         params="",
 #     )
 #     assert (
-#         "colrev.curation_missing_dedupe"
+#         "colrev_curation_missing_dedupe"
 #         == base_repo_review_manager.settings.dedupe.dedupe_package_endpoints[-1][
 #             "endpoint"
 #         ]
@@ -350,7 +350,7 @@
 #     package_manager.dynamically_load_endpoints()
 #     assert EndpointType.search_source in package_manager.endpoints
 #     assert (
-#         "colrev.crossref"
+#         "colrev_crossref"
 #         in package_manager.endpoints[EndpointType.search_source]
 #     )
 # def test_pyproject_endpoints(

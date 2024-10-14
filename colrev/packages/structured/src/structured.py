@@ -95,7 +95,7 @@ class StructuredData:
         """Add as an endpoint"""
 
         add_source = {
-            "endpoint": "colrev.structured",
+            "endpoint": "colrev_structured",
             "version": "0.1",
             "fields": [],
             "data_path_relative": "data/data/data.csv",

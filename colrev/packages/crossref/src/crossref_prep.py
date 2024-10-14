@@ -47,7 +47,7 @@ class CrossrefMetadataPrep:
         self.crossref_prefixes = [
             s.get_origin_prefix()
             for s in prep_operation.review_manager.settings.sources
-            if s.endpoint == "colrev.crossref"
+            if s.endpoint == "colrev_crossref"
         ]
 
     def check_availability(

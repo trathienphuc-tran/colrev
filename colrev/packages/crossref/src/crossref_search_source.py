@@ -39,7 +39,7 @@ if typing.TYPE_CHECKING:  # pragma: no cover
 class CrossrefSearchSource:
     """Crossref API"""
 
-    endpoint = "colrev.crossref"
+    endpoint = "colrev_crossref"
     source_identifier = Fields.DOI
 
     settings_class = colrev.package_manager.package_settings.DefaultSourceSettings
@@ -134,7 +134,7 @@ class CrossrefSearchSource:
             return crossref_md_source_l[0]
 
         return colrev.settings.SearchSource(
-            endpoint="colrev.crossref",
+            endpoint="colrev_crossref",
             filename=crossref_md_filename,
             search_type=SearchType.MD,
             search_parameters={},
@@ -204,7 +204,7 @@ class CrossrefSearchSource:
 
         filename = operation.get_unique_filename(f"crossref_issn_{issn}")
         add_source = colrev.settings.SearchSource(
-            endpoint="colrev.crossref",
+            endpoint="colrev_crossref",
             filename=filename,
             search_type=SearchType.TOC,
             search_parameters={
@@ -245,7 +245,7 @@ class CrossrefSearchSource:
 
                 filename = operation.get_unique_filename(file_path_string="crossref")
                 search_source = colrev.settings.SearchSource(
-                    endpoint="colrev.crossref",
+                    endpoint="colrev_crossref",
                     filename=filename,
                     search_type=SearchType.API,
                     search_parameters=query,
@@ -258,7 +258,7 @@ class CrossrefSearchSource:
             else:
                 filename = operation.get_unique_filename(file_path_string="crossref")
                 search_source = colrev.settings.SearchSource(
-                    endpoint="colrev.crossref",
+                    endpoint="colrev_crossref",
                     filename=filename,
                     search_type=SearchType.TOC,
                     search_parameters=params_dict,

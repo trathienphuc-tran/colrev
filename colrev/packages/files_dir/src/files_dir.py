@@ -43,7 +43,7 @@ class FilesSearchSource:
 
     settings_class = colrev.package_manager.package_settings.DefaultSourceSettings
 
-    endpoint = "colrev.files_dir"
+    endpoint = "colrev_files_dir"
     source_identifier = Fields.FILE
     search_types = [SearchType.FILES]
 
@@ -757,7 +757,7 @@ class FilesSearchSource:
         filename = operation.get_unique_filename(file_path_string="files")
         # pylint: disable=no-value-for-parameter
         search_source = colrev.settings.SearchSource(
-            endpoint="colrev.files_dir",
+            endpoint="colrev_files_dir",
             filename=filename,
             search_type=SearchType.FILES,
             search_parameters={"scope": {"path": "data/pdfs"}},

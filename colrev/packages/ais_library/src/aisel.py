@@ -40,7 +40,7 @@ class AISeLibrarySearchSource:
         SearchType.TOC,
         SearchType.API,
     ]
-    endpoint = "colrev.ais_library"
+    endpoint = "colrev_ais_library"
 
     ci_supported: bool = Field(default=True)
     heuristic_status = SearchSourceHeuristicStatus.supported

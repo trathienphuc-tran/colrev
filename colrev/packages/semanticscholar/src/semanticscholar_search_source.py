@@ -49,7 +49,7 @@ class SemanticScholarSearchSource:
     _s2: SemanticScholar
     _search_return: PaginatedResults
 
-    endpoint = "colrev.semanticscholar"
+    endpoint = "colrev_semanticscholar"
     ci_supported: bool = Field(default=True)
 
     # SearchSourceInterface constants
@@ -82,7 +82,7 @@ class SemanticScholarSearchSource:
             self.search_source = self.settings_class(**settings)
         else:
             self.search_source = colrev.settings.SearchSource(
-                endpoint="colrev.semanticscholar",
+                endpoint="colrev_semanticscholar",
                 filename=self._s2_filename,
                 search_type=SearchType.API,
                 search_parameters={},
@@ -363,7 +363,7 @@ class SemanticScholarSearchSource:
         filename = operation.get_unique_filename(file_path_string="semanticscholar")
 
         search_source = colrev.settings.SearchSource(
-            endpoint="colrev.semanticscholar",
+            endpoint="colrev_semanticscholar",
             filename=filename,
             search_type=SearchType.API,
             search_parameters=search_params,

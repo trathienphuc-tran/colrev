@@ -25,7 +25,7 @@ class WebOfScienceSearchSource:
 
     settings_class = colrev.package_manager.package_settings.DefaultSourceSettings
 
-    endpoint = "colrev.web_of_science"
+    endpoint = "colrev_web_of_science"
     source_identifier = (
         "https://www.webofscience.com/wos/woscc/full-record/" + "{{unique-id}}"
     )
@@ -171,16 +171,16 @@ class WebOfScienceSearchSource:
         record.format_if_mostly_upper(Fields.BOOKTITLE, case="title")
         record.format_if_mostly_upper(Fields.AUTHOR, case="title")
 
-        record.remove_field(key="colrev.web_of_science.researcherid-numbers")
-        record.remove_field(key="colrev.web_of_science.orcid-numbers")
-        record.remove_field(key="colrev.web_of_science.book-group-author")
-        record.remove_field(key="colrev.web_of_science.note")
-        record.remove_field(key="colrev.web_of_science.organization")
-        record.remove_field(key="colrev.web_of_science.eissn")
-        record.remove_field(key="colrev.web_of_science.earlyaccessdate")
+        record.remove_field(key="colrev_web_of_science.researcherid-numbers")
+        record.remove_field(key="colrev_web_of_science.orcid-numbers")
+        record.remove_field(key="colrev_web_of_science.book-group-author")
+        record.remove_field(key="colrev_web_of_science.note")
+        record.remove_field(key="colrev_web_of_science.organization")
+        record.remove_field(key="colrev_web_of_science.eissn")
+        record.remove_field(key="colrev_web_of_science.earlyaccessdate")
 
-        record.remove_field(key="colrev.web_of_science.meeting")
-        record.remove_field(key="colrev.web_of_science.article-number")
+        record.remove_field(key="colrev_web_of_science.meeting")
+        record.remove_field(key="colrev_web_of_science.article-number")
 
         if record.data[Fields.AUTHOR] == "[Anonymous]":
             del record.data[Fields.AUTHOR]

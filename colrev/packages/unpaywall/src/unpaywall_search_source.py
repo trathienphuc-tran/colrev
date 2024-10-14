@@ -29,7 +29,7 @@ class UnpaywallSearchSource:
 
     source_identifier = "doi"
     search_types = [SearchType.API]
-    endpoint = "colrev.unpaywall"
+    endpoint = "colrev_unpaywall"
 
     ci_supported: bool = Field(default=False)
     heuristic_status = SearchSourceHeuristicStatus.oni

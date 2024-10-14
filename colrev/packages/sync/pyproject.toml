@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "colrev.sync"
+name = "colrev_sync"
 description = "CoLRev package for sync"
 version = "0.1.0"
 license = "MIT"
