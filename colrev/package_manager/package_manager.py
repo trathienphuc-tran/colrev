@@ -207,6 +207,7 @@ class PackageManager:
                 for p_name, p_path in internal_packages_dict.items()
                 if p_name in colrev_packages
             ]
+            print(colrev_package_paths)
             args = [sys.executable, "-m", "pip", "install"]
             args += colrev_package_paths
             if upgrade:
