@@ -131,8 +131,9 @@ class PackageManager:
 
         self.install(packages=packages)
 
-    def _add_dependencies(self, packages: typing.List[str]) -> None:
+    def _add_dependencies(self, packages: typing.List[str]) -> typing.List[str]:
         packages = list(packages)
+
         if len(packages) == 1 and packages[0] == "colrev_literature_review":
             packages.extend(
                 [
@@ -168,6 +169,7 @@ class PackageManager:
                     "colrev_rev_check",
                 ]
             )
+        return packages
 
     # pylint: disable=too-many-arguments
     # pylint: disable=too-many-branches
@@ -190,7 +192,7 @@ class PackageManager:
             packages = list(internal_packages_dict.keys())
 
         # TODO : this is a temporary method
-        self._add_dependencies(packages)
+        packages = self._add_dependencies(packages)
 
         # Install packages from colrev monorepository first
         colrev_packages = []
