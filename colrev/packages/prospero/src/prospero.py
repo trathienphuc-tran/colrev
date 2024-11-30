@@ -26,6 +26,13 @@ class ProsperoSearchSource:
     ci_supported: bool = Field(default=True)
     db_url = "https://www.crd.york.ac.uk/prospero/"
 
+    def __init__(
+        self, *, source_operation: colrev.process.operation.Operation, settings: dict
+    ) -> None:
+        self.search_source = self.settings_class(**settings)
+        self.review_manager = source_operation.review_manager
+        self.operation = source_operation
+
     @classmethod
     def add_endpoint(
         cls,
