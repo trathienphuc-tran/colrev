@@ -1,6 +1,10 @@
 #! /usr/bin/env python
 """SearchSource: Prospero"""
 import zope.interface
+import colrev.loader
+import colrev.loader.load_utils
+import colrev.ops
+import colrev.ops.load
 import colrev.package_manager.interfaces
 import colrev.package_manager.package_manager
 import colrev.package_manager.package_settings
@@ -64,8 +68,25 @@ class ProsperoSearchSource:
         operation.add_source_and_search(search_source)
         return search_source
 
+    def _load_bib(self) -> dict: 
+        records = colrev.loader.load_utils.load(
+            filename = self.search_source.filename,
+            logger = self.review_manager.logger,
+            unique_id_field = "ID",
+        )
+        return records
+
+    def load(self,load_operation: colrev.ops.load.Load) -> dict:
+        """Load the records from the SearchSource file"""
+
+        if self.search_source.filename.suffix == ".bib":
+            return self._load_bib
+        
+        raise NotImplementedError
+    
+    """
     def load(self, filename: Path) -> dict:
-        """
+        """"""""
         Load search results from a Prospero result file.
 
         Args:
@@ -73,7 +94,7 @@ class ProsperoSearchSource:
 
         Returns:
             dict: A dictionary containing the loaded search results.
-        """
+        """""""  
         try:
             # Ensure the file exists before attempting to load it
             if not filename.is_file():
@@ -93,8 +114,7 @@ class ProsperoSearchSource:
             # Log and handle errors gracefully
             print(f"Error loading file {filename}: {e}")
             return {}
-
-
+    """
 if __name__ == "__main__":
     # Mock a Search operation
     class MockSearchOperation:
