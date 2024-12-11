@@ -80,7 +80,7 @@ class ProsperoSearchSource:
         """Load the records from the SearchSource file"""
 
         if self.search_source.filename.suffix == ".bib":
-            return self._load_bib
+            return self._load_bib()
         
         raise NotImplementedError
     
