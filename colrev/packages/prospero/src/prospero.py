@@ -240,10 +240,7 @@ class ProsperoSearchSource:
     search(self=1,rerun=bool)
 
 
-"""if __name__ == "__main__":
-    
-            return {}
-    """
+"""
 if __name__ == "__main__":
     # Mock a Search operation
     class MockSearchOperation:
