@@ -130,36 +130,6 @@ class ProsperoSearchSource:
             # Log and handle errors gracefully
             print(f"Error loading file {filename}: {e}")
             return {}
-
-
-if __name__ == "__main__":
-    # Mock a Search operation
-    class MockSearchOperation:
-        def get_unique_filename(self, file_path_string: str) -> str:
-            return f"{file_path_string}.json"
-
-        def add_source_and_search(self, search_source):
-            print(f"Search source added: {search_source}")
-
-    # Create a test case for add_endpoint()
-    search_op = MockSearchOperation()
-    params = "url=https://www.crd.york.ac.uk/prospero/?search=cancer"
-
-    # Call add_endpoint
-    try:
-        endpoint = ProsperoSearchSource.add_endpoint(search_op, params)
-        print(f"Generated Search Source: {endpoint}")
-    except ValueError as e:
-        print(f"Error in add_endpoint: {e}")
-     # Test the load method
-    try:
-        prospero_source = ProsperoSearchSource()
-        filename = Path("colrev/packages/prospero/bin/prospero_results.json")
-        loaded_data = prospero_source.load(filename)
-        print(f"Loaded Data: {loaded_data}")
-    except Exception as e:
-        print(f"Error in load: {e}")
-
     
     def search(self, rerun: bool) -> None:
 
@@ -232,3 +202,31 @@ if __name__ == "__main__":
 
         #assert "No results found." not in driver.page_source
         driver.close()
+
+if __name__ == "__main__":
+    # Mock a Search operation
+    class MockSearchOperation:
+        def get_unique_filename(self, file_path_string: str) -> str:
+            return f"{file_path_string}.json"
+
+        def add_source_and_search(self, search_source):
+            print(f"Search source added: {search_source}")
+
+    # Create a test case for add_endpoint()
+    search_op = MockSearchOperation()
+    params = "url=https://www.crd.york.ac.uk/prospero/?search=cancer"
+
+    # Call add_endpoint
+    try:
+        endpoint = ProsperoSearchSource.add_endpoint(search_op, params)
+        print(f"Generated Search Source: {endpoint}")
+    except ValueError as e:
+        print(f"Error in add_endpoint: {e}")
+     # Test the load method
+    try:
+        prospero_source = ProsperoSearchSource()
+        filename = Path("colrev/packages/prospero/bin/prospero_results.json")
+        loaded_data = prospero_source.load(filename)
+        print(f"Loaded Data: {loaded_data}")
+    except Exception as e:
+        print(f"Error in load: {e}")
