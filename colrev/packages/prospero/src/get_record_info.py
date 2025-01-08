@@ -29,7 +29,7 @@ def get_record_info(
         title = tds[2].text.strip()
         review_status = tds[4].text.strip()
 
-        registered_date_array.append(registered_date)
+        registered_date_array.append(registered_date[-4:])
         title_array.append(title)
         review_status_array.append(review_status)
 
@@ -37,7 +37,7 @@ def get_record_info(
         record_id = checkbox.get_attribute("data-checkid")
         record_id_array_pro_page.append(record_id)
     record_id_array.extend(record_id_array_pro_page)
-    print(record_id_array)
+    """print(record_id_array)"""
     # for each record, load detail page and extract authors/language
     """language_array = []
     authors_array = []

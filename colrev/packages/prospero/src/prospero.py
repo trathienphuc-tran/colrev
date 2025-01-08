@@ -333,7 +333,7 @@ class ProsperoSearchSource:
                         "Failed loading results: StaleElementReferenceException"
                     )
 
-                print(f"Current window handle: {driver.window_handles}")
+                """print(f"Current window handle: {driver.window_handles}")"""
 
                 try:
                     WebDriverWait(driver, 3).until(
@@ -359,17 +359,17 @@ class ProsperoSearchSource:
                 authors_array,
                 review_status_array,
             ):
-                # <CHANGED> We replaced "published" with "colrev.prospero_id" (namespaced)
-                # and "note" with "colrev.status" so they won't get dropped at load time
+                # <CHANGED> We replaced "published" with "prospero_id" (namespaced)
+                # and "note" with "prospero.status" 
                 entry = {
                     "ENTRYTYPE": "misc",
                     "ID": record_id,
                     "title": title,
                     "author": authors,
-                    "colrev.prospero_id": f"Prospero Registration {record_id}",
+                    "prospero_id": f"Prospero Registration {record_id}",
                     "year": registered_date,
                     "language": language,
-                    "colrev.status": f"{status}",
+                    "prospero.status": f"{status}",
                 }
                 bib_entries.append(entry)
 
