@@ -89,6 +89,6 @@ def get_record_info(
         language_array.append(language_details)
         authors_array.append(authors_details)
         print(
-            f"Record {x+1+page_increment*50}: [ID: {record_id}] {title_array[x]}, Language: {language_details}, Authors: {authors_details}",
+            f"{x+1+page_increment*50}: [ID: {record_id}] {title_array[x]}, Authors: {authors_details}",
             flush=True,
         )
