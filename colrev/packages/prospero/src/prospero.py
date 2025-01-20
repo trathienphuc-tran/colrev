@@ -3,13 +3,11 @@ from __future__ import annotations
 
 import logging
 import math
-import os
 import time
 import typing
 from pathlib import Path
 from unittest.mock import MagicMock
 
-import bibtexparser
 import zope.interface
 from pydantic import Field
 from selenium import webdriver
@@ -102,7 +100,22 @@ class ProsperoSearchSource:
         cls, operation: Search, params: str
     ) -> colrev.settings.SearchSource:
         """Adds Prospero as a search source endpoint based on user-provided parameters."""
-        params_dict = {}
+        if len(params) == 0:
+            search_source = operation.create_api_source(endpoint=cls.endpoint)
+            search_source.search_parameters["url"] = (
+                cls.db_url + "search?" + "#searchadvanced"
+            )
+            search_source.search_parameters["version"] = "0.1.0"
+            operation.add_source_and_search(search_source)
+
+            return search_source
+        else:
+            if Fields.URL in params:
+                query = {"url": params[Fields.URL]}
+            else:
+                query = params
+
+        """params_dict = {}
         if params:
             if params.startswith("http"):
                 params_dict = {"url": params}
@@ -112,8 +125,7 @@ class ProsperoSearchSource:
                         key, value = item.split("=", 1)
                         params_dict[key] = value
                     else:
-                        raise ValueError(f"Invalid parameter format: {item}")
-
+                        raise ValueError(f"Invalid parameter format: {item}")"""
         # Generate a unique .bib filename
         filename = operation.get_unique_filename(file_path_string="prospero_results")
 
@@ -121,7 +133,7 @@ class ProsperoSearchSource:
             endpoint=cls.endpoint,
             filename=filename,
             search_type=SearchType.API,
-            search_parameters=params_dict,
+            search_parameters=query,
             comment="Search source for Prospero protocols",
         )
         operation.add_source_and_search(new_search_source)
@@ -369,24 +381,12 @@ class ProsperoSearchSource:
                     "prospero_id": f"Prospero Registration {record_id}",
                     "year": registered_date,
                     "language": language,
-                    "prospero.status": f"{status}",
+                    "colrev.prospero_status": f"{status}",
+                    "url": f"https://www.crd.york.ac.uk/prospero/display_record.asp?RecordID={record_id}",
                 }
                 bib_entries.append(entry)
 
             self.new_records = bib_entries
-
-            bib_database = bibtexparser.bibdatabase.BibDatabase()
-            bib_database.entries = bib_entries
-            os.makedirs("data/search/", exist_ok=True)
-            with open(
-                "data/search/prospero_results.bib", "w", encoding="utf8"
-            ) as bibfile:
-                bibtexparser.dump(bib_database, bibfile)
-            if self.logger:
-                self.logger.info(
-                    "Saved Prospero search results to data/search/prospero_results.bib"
-                )
-            print("BibTeX file saved to data/search/prospero_results.bib")
 
         finally:
             driver.quit()
