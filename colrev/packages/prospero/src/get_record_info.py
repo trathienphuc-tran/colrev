@@ -27,11 +27,11 @@ def get_record_info(
 
         registered_date = tds[1].text.strip().split("/")
         registered_date = registered_date[-1]
-        title = tds[2].text.strip()
+#        title = tds[2].text.strip()
         review_status = tds[4].text.strip()
 
         registered_date_array.append(registered_date[-4:])
-        title_array.append(title)
+#        title_array.append(title)
         review_status_array.append(review_status)
 
         checkbox = tds[0].find_element(By.XPATH, ".//input[@type='checkbox']")
@@ -56,6 +56,7 @@ def get_record_info(
                     (By.XPATH, "//div[@id='documentfields']")
                 )
             )
+
             # Extract language
             try:
                 WebDriverWait(driver, 5).until(
@@ -77,9 +78,18 @@ def get_record_info(
                 authors_details = authors_text if authors_text else "N/A"
             except NoSuchElementException:
                 authors_details = "N/A"
+
+            # Extract title without ID number attached at the end
+            try:
+                title_div = driver.find_element(By.ID, "documenttitlestitle")
+                title_text = title_div.text.strip()
+                title_details = title_text if title_text else "N/A"
+            except NoSuchElementException:
+                title = "N/A"
         except TimeoutException:
             language_details = "N/A"
             authors_details = "N/A"
+            title = "N/A"
         # make sure pop-up window is closed and switch to original result page
         finally:
             assert len(driver.window_handles) > 1
@@ -88,7 +98,8 @@ def get_record_info(
             # print(driver.window_handles)
         language_array.append(language_details)
         authors_array.append(authors_details)
+        title_array.append(title_details)
         print(
-            f"{x+1+page_increment*50}: [ID: {record_id}] {title_array[x]}, Authors: {authors_details}",
+            f"{x+1+page_increment*50}. [ID: {record_id}] {title_array[x]}",
             flush=True,
         )
